@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: giropops-senhas
+  namespace: argocd
+spec:
+  project: 'default'
+  source:
+    helm: {}
+    repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
+    targetRevision: feature/argocd-training
+    path: giropops-senhas/helm
+  destination:
+    namespace: giropops-senhas
+    server: 'https://kubernetes.default.svc'
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
