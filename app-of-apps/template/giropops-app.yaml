@@ -1,25 +1,20 @@
-{{ if .Values.argocd.giropopsSenhas.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: giropops-senhas
+  name: {{ .Values.giropops.name }}
   namespace: argocd
 spec:
-  project: 'default'
-  source:
-    helm:
-      parameters:
-      - name: "giropopsSenhas.replicas"
-        value: "{{ .Values.argocd.giropopsSenhas.replicas }}"
-    path: giropops-senhas/helm
-    repoURL: https://github.com/maxaraujo2020/descomplicando-argocd.git
-    targetRevision: feature/argocd-training
   destination:
-    namespace: giropops-senhas
+    namespace: {{ .Values.giropops.namespace }}
     server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: {{ .Values.giropops.repo }}
+    targetRevision: {{ .Values.giropops.revision }}
+    path: {{ .Values.giropops.path }}
   syncPolicy:
     automated:
-      selfHeal: true # => Obriga a utilização do repo como fonte única das informações.
+      selfHeal: true
+      prune: true
     syncOptions:
     - CreateNamespace=true
-{{ end }}

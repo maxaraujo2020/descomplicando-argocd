@@ -1,7 +1,6 @@
-# test
-argocd:
-  giropopsSenhas:
-    enabled: true
-    replicas: 5
-  randomLogger:
-    enabled: true
+giropops:
+  name: giropops-senhas
+  namespace: giropops-senhas
+  repo: https://github.com/maxaraujo2020/descomplicando-argocd.git
+  revision: feature/argocd-training
+  path: giropops-senhas/helm
