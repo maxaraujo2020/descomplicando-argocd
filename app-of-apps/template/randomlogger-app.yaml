@@ -7,15 +7,18 @@ metadata:
 spec:
   destination:
     namespace: random-logger
-    server: 'https://kubernetes.default.svc'
+    server: https://kubernetes.default.svc
   project: default
   source:
     path: random-logger/helm
-    repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
+    repoURL: https://github.com/maxaraujo2020/descomplicando-argocd.git
     targetRevision: feature/argocd-training
+    helm:
+      valueFiles:
+        - values.yaml
   syncPolicy:
     automated:
       selfHeal: true
     syncOptions:
-    - CreateNamespace=true
+    - CreateNamespace=true 
 {{ end }}
