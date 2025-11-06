@@ -12,7 +12,7 @@ spec:
   source:
     helm:
       parameters:
-      - name: "argocd.giropopsSenhas.replicas"
+      - name: "giropopsSenhas.replicas"
         value: "{{ .Values.argocd.giropopsSenhas.replicas }}"
     path: giropops-senhas/helm
     repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
