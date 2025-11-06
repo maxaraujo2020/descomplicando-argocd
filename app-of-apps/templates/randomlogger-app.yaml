@@ -1,21 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: giropops-senhas
+  name: random-logger
   namespace: argocd
 spec:
+  destination:
+    namespace: random-logger
+    server: 'https://kubernetes.default.svc'
   project: 'default'
   source:
-    helm: {}
+    path: random-logger/helm
     repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
     targetRevision: feat/day2
-    path: giropops-senhas/helm
-
-  destination:
-    namespace: giropops-senhas
-    server: 'https://kubernetes.default.svc'
   syncPolicy:
     automated:
-      selfHeal: true # Quando true faz com que qualquer mudança aconteça apenas se houver mudança no git
+      selfHeal: true
     syncOptions:
     - CreateNamespace=true
