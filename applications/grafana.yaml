@@ -15,6 +15,7 @@ spec:
   - repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
     targetRevision: feat/day2
     ref: values
+
   destination:
     namespace: monitoring
     server: 'https://kubernetes.default.svc'
