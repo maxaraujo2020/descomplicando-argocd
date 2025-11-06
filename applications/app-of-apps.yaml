@@ -10,6 +10,12 @@ spec:
   project: 'default'
   source:
     path: app-of-apps
+    helm: 
+      parameters:
+      - name: "argocd.giropopsSenhas.enabled"
+        value: "true"
+      - name: "argocd.randomLogger.enabled"
+        value: "true"
     repoURL: 'https://github.com/maxaraujo2020/descomplicando-argocd.git'
     targetRevision: feat/day2
   syncPolicy:
