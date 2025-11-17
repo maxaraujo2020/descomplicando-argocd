@@ -12,7 +12,7 @@ spec:
       revision: feat/day3
       directories:
       - path: applicationset/apps/*/helm
-        exclude: true
+  template:
     metadata:
       name: '{{.index .path.segments 3}}'
     spec:
